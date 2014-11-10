@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liv.CommandlineArguments", "CommandlineArguments\Liv.CommandlineArguments.csproj", "{76F1CC33-2292-4219-86A4-CFFB58DE789E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liv.CommandlineArguments", "Liv.CommandlineArguments\Liv.CommandlineArguments.csproj", "{76F1CC33-2292-4219-86A4-CFFB58DE789E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{6D8A0805-838C-4DBA-BAC2-917C17F79D15}"
 EndProject

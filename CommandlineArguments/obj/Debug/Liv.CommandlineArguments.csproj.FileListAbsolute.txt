@@ -1,5 +1,0 @@
-C:\Projects\tests\121-CommandlineArguments\CommandlineArguments\obj\Debug\Liv.CommandlineArguments.csprojResolveAssemblyReference.cache
-C:\Projects\tests\121-CommandlineArguments\CommandlineArguments\bin\Debug\CommandlineArguments.dll
-C:\Projects\tests\121-CommandlineArguments\CommandlineArguments\bin\Debug\CommandlineArguments.pdb
-C:\Projects\tests\121-CommandlineArguments\CommandlineArguments\obj\Debug\CommandlineArguments.dll
-C:\Projects\tests\121-CommandlineArguments\CommandlineArguments\obj\Debug\CommandlineArguments.pdb

@@ -51,9 +51,12 @@
     <Compile Include="CommandOptionAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Liv.CommandlineArguments.nuspec" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release P:\Eli\Tools\nuget pack "$(ProjectPath)" -OutputDirectory "\\10.1.100.1\dev\LocalNuget"  -Prop Configuration=Release
+    <PostBuildEvent>if $(ConfigurationName) == Release P:\Eli\Tools\nuget pack "$(ProjectPath)" -OutputDirectory "$(TargetDir) "  -Prop Configuration=Release
 	</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

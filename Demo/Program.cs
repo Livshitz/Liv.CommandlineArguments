@@ -11,9 +11,9 @@ namespace Demo
         private static ArgsManager<Args> args;
         public enum Args
         {
-            [Option(DefaultValue = "myValue", IsRequired = true, ShortName = "ip", Description = "Required value")]
+            [Option(DefaultValue = "myValue", IsRequired = true, ShortName = "o", Description = "Required value")]
             OptionReqStr,
-            [Option(DefaultValue = "123", Type = typeof(int), Description = "integer option", ShortName = "myInt")]
+            [Option(DefaultValue = "123", Type = typeof(int), Description = "integer option")]
             OptionInt,
         }
 

@@ -44,7 +44,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommandlineArguments\Liv.CommandlineArguments.csproj">
+    <ProjectReference Include="..\Liv.CommandlineArguments\Liv.CommandlineArguments.csproj">
       <Project>{76f1cc33-2292-4219-86a4-cffb58de789e}</Project>
       <Name>Liv.CommandlineArguments</Name>
     </ProjectReference>

@@ -9,3 +9,10 @@ C:\Projects\tests\CommandlineArguments\Demo\obj\Debug\Demo.exe
 C:\Projects\tests\CommandlineArguments\Demo\obj\Debug\Demo.pdb
 C:\Projects\Livshitz\CommandlineArguments\Demo\obj\Debug\Demo.exe
 C:\Projects\Livshitz\CommandlineArguments\Demo\obj\Debug\Demo.pdb
+C:\Projects\Livshitz\Liv.CommandlineArguments\Demo\obj\Debug\Demo.exe
+C:\Projects\Livshitz\Liv.CommandlineArguments\Demo\obj\Debug\Demo.pdb
+C:\Projects\Livshitz\Liv.CommandlineArguments\Demo\bin\Debug\Demo.exe
+C:\Projects\Livshitz\Liv.CommandlineArguments\Demo\bin\Debug\Demo.pdb
+C:\Projects\Livshitz\Liv.CommandlineArguments\Demo\bin\Debug\Liv.CommandlineArguments.dll
+C:\Projects\Livshitz\Liv.CommandlineArguments\Demo\bin\Debug\Liv.CommandlineArguments.pdb
+C:\Projects\Livshitz\Liv.CommandlineArguments\Demo\obj\Debug\Demo.csprojResolveAssemblyReference.cache
