@@ -1,0 +1,11 @@
+C:\Projects\tests\121-CommandlineArguments\Demo\bin\Debug\Demo.exe
+C:\Projects\tests\121-CommandlineArguments\Demo\bin\Debug\Demo.pdb
+C:\Projects\tests\121-CommandlineArguments\Demo\obj\Debug\Demo.csprojResolveAssemblyReference.cache
+C:\Projects\tests\121-CommandlineArguments\Demo\obj\Debug\Demo.exe
+C:\Projects\tests\121-CommandlineArguments\Demo\obj\Debug\Demo.pdb
+C:\Projects\tests\121-CommandlineArguments\Demo\bin\Debug\CommandlineArguments.dll
+C:\Projects\tests\121-CommandlineArguments\Demo\bin\Debug\CommandlineArguments.pdb
+C:\Projects\tests\CommandlineArguments\Demo\obj\Debug\Demo.exe
+C:\Projects\tests\CommandlineArguments\Demo\obj\Debug\Demo.pdb
+C:\Projects\Livshitz\CommandlineArguments\Demo\obj\Debug\Demo.exe
+C:\Projects\Livshitz\CommandlineArguments\Demo\obj\Debug\Demo.pdb
