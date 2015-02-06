@@ -1,4 +1,0 @@
-C:\Projects\Livshitz\CommandlineArguments\CommandlineArguments\bin\Release\Liv.CommandlineArguments.dll
-C:\Projects\Livshitz\CommandlineArguments\CommandlineArguments\bin\Release\Liv.CommandlineArguments.pdb
-C:\Projects\Livshitz\CommandlineArguments\CommandlineArguments\obj\Release\Liv.CommandlineArguments.dll
-C:\Projects\Livshitz\CommandlineArguments\CommandlineArguments\obj\Release\Liv.CommandlineArguments.pdb

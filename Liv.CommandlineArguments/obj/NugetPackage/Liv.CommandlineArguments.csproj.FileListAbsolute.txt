@@ -1,4 +1,0 @@
-C:\Projects\Livshitz\CommandlineArguments\CommandlineArguments\bin\NugetPackage\CommandlineArguments.dll
-C:\Projects\Livshitz\CommandlineArguments\CommandlineArguments\bin\NugetPackage\CommandlineArguments.pdb
-C:\Projects\Livshitz\CommandlineArguments\CommandlineArguments\obj\NugetPackage\CommandlineArguments.dll
-C:\Projects\Livshitz\CommandlineArguments\CommandlineArguments\obj\NugetPackage\CommandlineArguments.pdb

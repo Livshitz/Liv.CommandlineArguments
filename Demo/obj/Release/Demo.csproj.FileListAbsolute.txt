@@ -1,7 +1,0 @@
-C:\Projects\Livshitz\CommandlineArguments\Demo\bin\Release\Demo.exe
-C:\Projects\Livshitz\CommandlineArguments\Demo\bin\Release\Demo.pdb
-C:\Projects\Livshitz\CommandlineArguments\Demo\bin\Release\CommandlineArguments.dll
-C:\Projects\Livshitz\CommandlineArguments\Demo\bin\Release\CommandlineArguments.pdb
-C:\Projects\Livshitz\CommandlineArguments\Demo\obj\Release\Demo.csprojResolveAssemblyReference.cache
-C:\Projects\Livshitz\CommandlineArguments\Demo\obj\Release\Demo.exe
-C:\Projects\Livshitz\CommandlineArguments\Demo\obj\Release\Demo.pdb
