@@ -5,8 +5,8 @@
     <version>$version$</version>
     <authors>$author$</authors>
 	<owners>$author$</owners>
-    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINEx</licenseUrl>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINEx</projectUrl>
+    <licenseUrl>http://livshitz.wordpress.com/2014/11/11/new-opensource-library-liv-commandlinearguments-a-lightweight-library-to-implement-optionsswitches-support-in-your-console-app/</licenseUrl>
+    <projectUrl>http://livshitz.wordpress.com/2014/11/11/new-opensource-library-liv-commandlinearguments-a-lightweight-library-to-implement-optionsswitches-support-in-your-console-app/</projectUrl>
     <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINEx</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>

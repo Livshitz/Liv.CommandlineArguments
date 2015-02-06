@@ -42,7 +42,7 @@ namespace Liv.CommandlineArguments
 
                 SetValues(_Values);
 
-                WriteHelp(_Args, _Values);
+                //WriteHelp(_Args, _Values);
             }
             catch (Exception ex)
             {
@@ -167,7 +167,7 @@ namespace Liv.CommandlineArguments
                     if (valueItem.ShortName == name)
                     {
                         if (valueItem.Type == typeof (int)) value = value.Replace("(", "").Replace(")", "");
-                        if (valueItem.Type == typeof (bool)) value = "true";
+                        if (valueItem.Type == typeof (bool) && value != "false") value = "true";
 
                         valueItem.Value = value;
                         if (!String.IsNullOrEmpty(valueItem.DefaultValueExtend))
@@ -222,6 +222,11 @@ namespace Liv.CommandlineArguments
             return this[ArgumentName];
         }
 
+		public bool HasValue(T ArgumentName)
+		{
+			return this[ArgumentName] != null;
+		}
+
         public T2 GetValue<T2>(T ArgumentName)
         {
             return FindValueItem(ArgumentName).GetValue<T2>();
@@ -231,9 +236,17 @@ namespace Liv.CommandlineArguments
         {
             bool hasArgs = (_Args != null && _Args.Length >= 1);
             if (isRequireArgs && !hasArgs) return true;
-            bool isHelpArgument = hasArgs &&
-                                  (_Args[0] == "/?" || _Args[0] == "-?" || _Args[0] == "--?" || _Args[0] == "--help");
-            if (isHelpArgument) return true;
+	        if (!hasArgs) return false;
+
+			bool isHasHelpArgument = false;
+
+			foreach (var arg in _Args)
+			{
+				isHasHelpArgument = (arg == "/?" || arg == "-?" || arg == "--?" || arg == "--help" || arg == "/help");
+				if (isHasHelpArgument) break;
+			}
+			
+            if (isHasHelpArgument) return true;
             return false;
         }
 
@@ -300,6 +313,11 @@ namespace Liv.CommandlineArguments
             Console.WriteLine(ret);
             return ret;
         }
+
+		public void WriteHelp()
+		{
+			WriteHelp(_Args, _Values);
+		}
 
         public static string Fill(string text, int maxChars = 30, char fillChar = ' ')
         {

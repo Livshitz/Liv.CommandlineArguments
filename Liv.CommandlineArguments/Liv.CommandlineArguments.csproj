@@ -56,7 +56,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Release P:\Eli\Tools\nuget pack "$(ProjectPath)" -OutputDirectory "$(TargetDir) "  -Prop Configuration=Release
+    <PostBuildEvent>if $(ConfigurationName) == Release nuget pack "$(ProjectPath)" -OutputDirectory "D:\Livshitz\Projects\@Common\NugetPackages\ "  -Prop Configuration=Release
 	</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

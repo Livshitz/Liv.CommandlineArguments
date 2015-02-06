@@ -15,6 +15,8 @@ namespace Demo
             OptionReqStr,
             [Option(DefaultValue = "123", Type = typeof(int), Description = "integer option")]
             OptionInt,
+			[Option(DefaultValue = "false", Type = typeof(Boolean), Description = "boolean option")]
+			BoolTest,
         }
 
 
@@ -23,6 +25,10 @@ namespace Demo
             args = new ArgsManager<Args>(_args);
 
             Console.WriteLine(args.TraceArguments());
+
+			var isBoolTest = args.GetValue<Boolean>(Args.BoolTest);
+			Console.WriteLine("isBoolTest=" + isBoolTest);
+
 
             var x = args.GetValue<int>(Args.OptionInt);
             Console.WriteLine(x * 2);
