@@ -22,7 +22,15 @@ namespace Demo
 
         static void Main(string[] _args)
         {
-            args = new ArgsManager<Args>(_args);
+			try
+			{
+				args = new ArgsManager<Args>(_args);
+			}
+			catch (ArgumentException ex)
+			{
+				Console.WriteLine("Something went wrong while parsing input, ex:" + ex.Message);
+				return;
+			}
 
             Console.WriteLine(args.TraceArguments());
 

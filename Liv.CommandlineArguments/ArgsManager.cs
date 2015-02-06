@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
 
 namespace Liv.CommandlineArguments
 {
-    public class ArgsManager<T> where T : struct, IComparable, IConvertible, IFormattable
+	public class ArgsManager<T> where T : struct, IComparable, IConvertible, IFormattable
     {
         private string[] _Args = null;
         private OptionEx[] _Values = new OptionEx[] { };
@@ -44,11 +44,18 @@ namespace Liv.CommandlineArguments
 
                 //WriteHelp(_Args, _Values);
             }
+			catch (ArgumentException ex)
+			{
+				throw;
+			}
             catch (Exception ex)
             {
-                Console.WriteLine("ArgsManager: Unable to initialize arguments!", ex);
-                System.Environment.Exit(-1);
-            }
+				throw;
+				/* Avoid exiting on error (issue #1)
+				Console.WriteLine("ArgsManager: Unable to initialize arguments!", ex);
+				System.Environment.Exit(-1);
+				*/
+			}
         }
 
         private OptionEx[] PrepareValuesList()
@@ -177,13 +184,13 @@ namespace Liv.CommandlineArguments
                     }
                 }
 
-                if (!isFound) throw new ArgumentException("Invalid parameter \"" + name + "\", aborting");
+                if (!isFound) throw new ArgumentException("Invalid parameter \"" + name + "\"");
             }
 
             foreach (var valueItem in _Values)
             {
                 if (!valueItem.IsRequired) continue;
-                if (valueItem.Value == null) throw new ArgumentException("Parameter \"" + valueItem.Name + "\" is required, aborting");
+                if (valueItem.Value == null) throw new ArgumentException("Parameter \"" + valueItem.Name + "\" is required");
             }
             
             /*
