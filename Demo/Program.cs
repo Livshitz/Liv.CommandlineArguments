@@ -22,27 +22,28 @@ namespace Demo
 
         static void Main(string[] _args)
         {
-			try
-			{
-				args = new ArgsManager<Args>(_args);
-			}
-			catch (ArgumentException ex)
-			{
-				Console.WriteLine("Something went wrong while parsing input, ex:" + ex.Message);
-				return;
-			}
+		try
+		{
+			args = new ArgsManager<Args>(_args);
+		}
+		catch (ArgumentException ex)
+		{
+			Console.WriteLine("Something went wrong while parsing input, ex:" + ex.Message);
+			return;
+		}
+		
+		if (_args.Length == 0) args.WriteHelp();
+		else Console.WriteLine(args.TraceArguments());
 
-            Console.WriteLine(args.TraceArguments());
-
-			var isBoolTest = args.GetValue<Boolean>(Args.BoolTest);
-			Console.WriteLine("isBoolTest=" + isBoolTest);
-
-
-            var x = args.GetValue<int>(Args.OptionInt);
-            Console.WriteLine(x * 2);
-
-            Console.WriteLine("Done!");
-            Console.ReadLine();
+		var isBoolTest = args.GetValue<Boolean>(Args.BoolTest);
+		Console.WriteLine("isBoolTest=" + isBoolTest);
+		
+		
+		var x = args.GetValue<int>(Args.OptionInt);
+		Console.WriteLine(x * 2);
+		
+		Console.WriteLine("Done!");
+		Console.ReadLine();
         }
     }
 }
