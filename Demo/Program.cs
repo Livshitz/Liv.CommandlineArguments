@@ -15,8 +15,8 @@ namespace Demo
             OptionReqStr,
             [Option(DefaultValue = "123", Type = typeof(int), Description = "integer option")]
             OptionInt,
-			[Option(DefaultValue = "false", Type = typeof(Boolean), Description = "boolean option")]
-			BoolTest,
+	    [Option(DefaultValue = "false", Type = typeof(Boolean), Description = "boolean option")]
+	    BoolTest,
         }
 
 
