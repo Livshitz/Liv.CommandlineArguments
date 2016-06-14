@@ -8,31 +8,46 @@ namespace Demo
 {
     class Program
     {
-        private static ArgsManager<Args> args;
-        public enum Args
-        {
+        private static OptionsDefinition Options;
+
+		[OptionsClass]
+		public class OptionsDefinition : BaseOptionsClass
+		{
             [Option(DefaultValue = "myValue", IsRequired = true, ShortName = "o", Description = "Required value")]
-            OptionReqStr,
-            [Option(DefaultValue = "123", Type = typeof(int), Description = "integer option")]
-            OptionInt,
-			[Option(DefaultValue = "false", Type = typeof(Boolean), Description = "boolean option")]
-			BoolTest,
-        }
+			public string OptionReqStr { get; set; }
+			[Option(DefaultValue = "123", Description = "integer option")]
+			public int OptionInt { get; set; }
+			[Option(DefaultValue = "false", Description = "boolean option")]
+			public bool BoolTest { get; set; }
+		}
 
 
-        static void Main(string[] _args)
+        static void Main(string[] args)
         {
 			try
 			{
-				args = new ArgsManager<Args>(_args);
+				ConsoleOptions.PrintHelpIfNeededAndExit<OptionsDefinition>(args);
+
+				Console.WriteLine("Got arguments: {0}", String.Join(" ", args));
+				Console.WriteLine();
+
+				Options = ConsoleOptions.Init<OptionsDefinition>(args);
+				Options.PrintArguments();
+				if (Options.BoolTest)
+				{
+					Console.WriteLine("Bool test is set to true!");
+				}
 			}
 			catch (ArgumentException ex)
 			{
-				Console.WriteLine("Something went wrong while parsing input, ex:" + ex.Message);
+				Console.WriteLine("Something went wrong while parsing options, ex:" + ex.Message);
+				//ConsoleOptions.PrintHelp<OptionsDefinition>();
 				return;
 			}
 
-            Console.WriteLine(args.TraceArguments());
+			/*
+			 * 
+            Console.WriteLine(args.PrintArguments());
 
 			var isBoolTest = args.GetValue<Boolean>(Args.BoolTest);
 			Console.WriteLine("isBoolTest=" + isBoolTest);
@@ -40,6 +55,8 @@ namespace Demo
 
             var x = args.GetValue<int>(Args.OptionInt);
             Console.WriteLine(x * 2);
+
+			*/
 
             Console.WriteLine("Done!");
             Console.ReadLine();

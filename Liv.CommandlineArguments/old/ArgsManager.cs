@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 
 namespace Liv.CommandlineArguments
 {
+	[Obsolete("Use \"ConsoleOptions\" instead")]
 	public class ArgsManager<T> where T : struct, IComparable, IConvertible, IFormattable
     {
         private string[] _Args = null;

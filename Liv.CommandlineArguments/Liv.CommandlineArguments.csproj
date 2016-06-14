@@ -47,8 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArgsManager.cs" />
-    <Compile Include="CommandOptionAttribute.cs" />
+    <Compile Include="old\ArgsManager.cs" />
+    <Compile Include="BaseOptionsClass.cs" />
+    <Compile Include="old\OptionEx.cs" />
+    <Compile Include="ConsoleOptions.cs" />
+    <Compile Include="OptionAttribute.cs" />
+    <Compile Include="OptionsClassAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
