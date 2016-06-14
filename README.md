@@ -10,6 +10,9 @@ Once initialized, argument values are parsed and casted into your class' propert
 .
 ![untitled](https://cloud.githubusercontent.com/assets/246724/16036961/ea7d4594-3226-11e6-8a9a-89ac3410f3a4.png)
 
+###See example code:
+[Go to demo code](Demo/Program.cs)
+
 #Install:
 ```
 PM> Install-Package Liv.CommandlineArguments
