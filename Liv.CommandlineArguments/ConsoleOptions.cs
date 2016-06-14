@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -113,8 +114,16 @@ namespace Liv.CommandlineArguments
 		{
 			if (args.Length == 0)
 			{
-				PrintHelp<T>();
-				Environment.Exit(-1);
+				var ops = GetOptionsFromType<T>();
+				var hasAtLeastOneRequired = ops.Any(x => x.IsRequired);
+
+				if (hasAtLeastOneRequired)
+				{
+					Console.WriteLine("** Application has at least one required argument, printing help:");
+
+					PrintHelp<T>();
+					Environment.Exit(-1);
+				}
 			}
 
 			var isHasHelpArgument = false;

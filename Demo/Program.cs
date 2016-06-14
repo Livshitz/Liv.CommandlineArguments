@@ -15,12 +15,11 @@ namespace Demo
 		{
             [Option(DefaultValue = "myValue", IsRequired = true, ShortName = "o", Description = "Required value")]
 			public string OptionReqStr { get; set; }
-			[Option(DefaultValue = "123", Description = "integer option")]
+			[Option(Description = "integer option")]
 			public int OptionInt { get; set; }
 			[Option(DefaultValue = "false", Description = "boolean option")]
 			public bool BoolTest { get; set; }
 		}
-
 
         static void Main(string[] args)
         {
