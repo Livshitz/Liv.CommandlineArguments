@@ -6,14 +6,14 @@ using Liv.CommandlineArguments;
 
 namespace Demo
 {
-    class Program
-    {
-        private static OptionsDefinition Options;
+	class Program
+	{
+		private static OptionsDefinition Options;
 
 		[OptionsClass]
 		public class OptionsDefinition : BaseOptionsClass
 		{
-            [Option(DefaultValue = "myValue", IsRequired = true, ShortName = "o", Description = "Required value")]
+			[Option(DefaultValue = "myValue", IsRequired = true, ShortName = "o", Description = "Required value")]
 			public string OptionReqStr { get; set; }
 			[Option(Description = "integer option")]
 			public int OptionInt { get; set; }
@@ -21,17 +21,21 @@ namespace Demo
 			public bool BoolTest { get; set; }
 		}
 
-        static void Main(string[] args)
-        {
+		static void Main(string[] args)
+		{
 			try
 			{
+				// Check arguments for help request (e.g: "-?", "--help", etc.):
 				ConsoleOptions.PrintHelpIfNeededAndExit<OptionsDefinition>(args);
 
 				Console.WriteLine("Got arguments: {0}", String.Join(" ", args));
 				Console.WriteLine();
 
+				// Initialize your options: Parse and convert arguments to your OptionsClass
 				Options = ConsoleOptions.Init<OptionsDefinition>(args);
 				Options.PrintArguments();
+
+				// Actually using the argument values is simple:
 				if (Options.BoolTest)
 				{
 					Console.WriteLine("Bool test is set to true!");
@@ -40,25 +44,12 @@ namespace Demo
 			catch (ArgumentException ex)
 			{
 				Console.WriteLine("Something went wrong while parsing options, ex:" + ex.Message);
-				//ConsoleOptions.PrintHelp<OptionsDefinition>();
+				//ConsoleOptions.PrintHelp<OptionsDefinition>(); // Print help on error
 				return;
 			}
 
-			/*
-			 * 
-            Console.WriteLine(args.PrintArguments());
-
-			var isBoolTest = args.GetValue<Boolean>(Args.BoolTest);
-			Console.WriteLine("isBoolTest=" + isBoolTest);
-
-
-            var x = args.GetValue<int>(Args.OptionInt);
-            Console.WriteLine(x * 2);
-
-			*/
-
-            Console.WriteLine("Done!");
-            Console.ReadLine();
-        }
-    }
+			Console.WriteLine("Done!");
+			Console.ReadLine();
+		}
+	}
 }
