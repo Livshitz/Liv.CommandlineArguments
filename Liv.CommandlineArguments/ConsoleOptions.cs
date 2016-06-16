@@ -39,7 +39,7 @@ namespace Liv.CommandlineArguments
 			return ret;
 		}
 
-		public static T Init<T>(string[] args) where T : BaseOptionsClass, new()
+		public static T Init<T>(string[] args, bool printHelpIfNeeded = false) where T : BaseOptionsClass, new()
 		{
 			var arguments = ReadOptions(args);
 
@@ -107,6 +107,8 @@ namespace Liv.CommandlineArguments
 
 			ret.Options = ops;
 
+			if (printHelpIfNeeded) PrintHelpIfNeededAndExit<T>(args);
+
 			return ret;
 		}
 
@@ -115,7 +117,7 @@ namespace Liv.CommandlineArguments
 			if (args.Length == 0)
 			{
 				var ops = GetOptionsFromType<T>();
-				var hasAtLeastOneRequired = ops.Any(x => x.IsRequired);
+				var hasAtLeastOneRequired = ops.Any(x => x.IsRequired && (x.DefaultValue == null || x.DefaultValueExtend == null));
 
 				if (hasAtLeastOneRequired)
 				{
