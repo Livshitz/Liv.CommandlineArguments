@@ -3,11 +3,11 @@
 [OptionsClass]
 public class OptionsDefinition : BaseOptionsClass
 {
-	[Option(DefaultValue = "myValue", IsRequired = true, ShortName = "o", Description = "Required value")]
+	[Option(Description = "Required value", DefaultValue = "myValue", IsRequired = true, ShortName = "o")]
 	public string OptionReqStr { get; set; }
 	[Option(Description = "integer option")]
 	public int OptionInt { get; set; }
-	[Option(DefaultValue = "false", Description = "boolean option")]
+	[Option(DefaultValue = "false", NoShortName = true, Description = "boolean option")]
 	public bool BoolTest { get; set; }
 }
 

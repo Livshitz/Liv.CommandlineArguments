@@ -15,7 +15,7 @@
         <tags>C# console arguments options</tags>
     </metadata>
     <files>
-        <file src="bin\Release\OptionsExample.cs" target="content\OptionsExample.cs" />
+        <file src="bin\Release\Options.cs" target="content\Options.cs" />
         <file src="bin\Release\Liv.CommandlineArguments.dll" target="lib\Liv.CommandlineArguments.dll" />
     </files>
 </package>

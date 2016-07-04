@@ -7,6 +7,7 @@ namespace Liv.CommandlineArguments
 	public class OptionAttribute : Attribute
 	{
 		public string ShortName { get; set; }
+		public bool NoShortName { get; set; }
 		public string LongName { get; set; }
 		public string Description { get; set; }
 		public Type Type { get; set; }

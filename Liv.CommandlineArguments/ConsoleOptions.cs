@@ -58,7 +58,7 @@ namespace Liv.CommandlineArguments
 					}
 				}
 
-				if (op.IsRequired && selectedValue == null)
+				if (op.IsRequired && selectedValue == null && !printHelpIfNeeded)
 				{
 					throw new ArgumentException(String.Format("Option \"{0}\" (\"{1}\") is required!",
 						op.LongName, op.ShortName));
@@ -102,7 +102,7 @@ namespace Liv.CommandlineArguments
 						if (op.IsRequired) throw new ArgumentException("Error: Option \"{0}\" is required and we failed to put value to it", op.LongName);
 					}
 				}
-				op.Value = op.AssignedProperty.GetValue(ret, null).ToString();
+				op.Value = op.AssignedProperty.GetValue(ret, null)?.ToString();
 			}
 
 			ret.Options = ops;
@@ -175,8 +175,13 @@ namespace Liv.CommandlineArguments
 			sb.Append("Options:" + Environment.NewLine);
 			foreach (var op in ops)
 			{
-				sb.Append(" -" + Fill(op.ShortName, 5) + " --" + Fill(op.LongName, 25) + ": " +
-						  op.Description);
+				if (!op.NoShortName) sb.Append(" -" + Fill(op.ShortName, 5));
+				//else sb.Append("  " + Fill(" ", 5));
+				sb.Append(" --" + Fill(op.LongName, 25));
+
+				if (op.NoShortName) sb.Append("  " + Fill(" ", 5));
+
+				sb.Append(": " + op.Description);
 
 				if (op.DefaultValue != null)
 				{

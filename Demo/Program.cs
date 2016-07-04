@@ -13,12 +13,20 @@ namespace Demo
 		[OptionsClass]
 		public class OptionsDefinition : BaseOptionsClass
 		{
-			[Option(DefaultValue = "myValue", IsRequired = true, ShortName = "o", Description = "Required value")]
-			public string OptionReqStr { get; set; }
-			[Option(Description = "integer option")]
-			public int OptionInt { get; set; }
-			[Option(DefaultValue = "false", Description = "boolean option")]
-			public bool BoolTest { get; set; }
+			[Option(Description = "Output file name", DefaultValue = "MyBlankFile.dat", ShortName = "f")]
+			public string FileName { get; set; }
+			[Option(Description = "Output folder", ShortName = "d", IsRequired = true)]
+			public string DestinationFolder { get; set; }
+			[Option(Description = "File Size (KB)", NoShortName = true, DefaultValue = "10000")]
+			public int Size { get; set; }
+			[Option(Description = "Number of files to create", ShortName = "n", DefaultValue = "2")]
+			public int NumberOfFiles { get; set; }
+			[Option(Description = "Run in loops, with interval (-1 for only one run)", ShortName = "i", DefaultValue = "-1")]
+			public int Interval { get; set; }
+			[Option(Description = "Insert to random subfolder", ShortName = "r", DefaultValue = "false")]
+			public bool ChooseRandomFolder { get; set; }
+			//[Option(DefaultValue = "false", Description = "boolean option")]
+			//public bool BoolTest { get; set; }
 		}
 
 		static void Main(string[] args)
@@ -26,17 +34,17 @@ namespace Demo
 			try
 			{
 				// Check arguments for help request (e.g: "-?", "--help", etc.):
-				ConsoleOptions.PrintHelpIfNeededAndExit<OptionsDefinition>(args);
+				//ConsoleOptions.PrintHelpIfNeededAndExit<OptionsDefinition>(args);
 
 				Console.WriteLine("Got arguments: {0}", String.Join(" ", args));
 				Console.WriteLine();
 
 				// Initialize your options: Parse and convert arguments to your OptionsClass
-				Options = ConsoleOptions.Init<OptionsDefinition>(args);
+				Options = ConsoleOptions.Init<OptionsDefinition>(args, true);
 				Options.PrintArguments();
 
 				// Actually using the argument values is simple:
-				if (Options.BoolTest)
+				if (Options.ChooseRandomFolder)
 				{
 					Console.WriteLine("Bool test is set to true!");
 				}

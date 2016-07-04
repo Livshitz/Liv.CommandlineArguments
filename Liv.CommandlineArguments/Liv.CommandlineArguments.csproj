@@ -53,7 +53,7 @@
     <Compile Include="ConsoleOptions.cs" />
     <Compile Include="OptionAttribute.cs" />
     <Compile Include="OptionsClassAttribute.cs" />
-    <Compile Include="OptionsExample.cs">
+    <Compile Include="Options.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
