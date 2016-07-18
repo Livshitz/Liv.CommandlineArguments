@@ -2,11 +2,12 @@ namespace Liv.CommandlineArguments
 {
 	public class BaseOptionsClass
 	{
-		public OptionAttribute[] Options { get; set; }
+		public string[] OriginalParameters { get; set; }
+		internal OptionAttribute[] Options { get; set; }
 
-		public string PrintArguments()
+		public string PrintArguments(bool writeToConsole = true)
 		{
-			return ConsoleOptions.PrintArguments(this);
+			return ConsoleOptions.PrintArguments(this, writeToConsole);
 		}
 	}
 }

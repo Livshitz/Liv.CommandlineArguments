@@ -13,9 +13,9 @@ namespace Demo
 		[OptionsClass]
 		public class OptionsDefinition : BaseOptionsClass
 		{
-			[Option(Description = "Output file name", DefaultValue = "MyBlankFile.dat", ShortName = "f")]
+			[Option(Description = "Output file name", DefaultValue = "MyBlankFile.dat", ShortName = "f", TrailingSlashFix = true)]
 			public string FileName { get; set; }
-			[Option(Description = "Output folder", ShortName = "d", IsRequired = true)]
+			[Option(Description = "Output folder", ShortName = "d", IsRequired = true, TrailingSlashFix = true)]
 			public string DestinationFolder { get; set; }
 			[Option(Description = "File Size (KB)", NoShortName = true, DefaultValue = "10000")]
 			public int Size { get; set; }
@@ -42,6 +42,9 @@ namespace Demo
 				// Initialize your options: Parse and convert arguments to your OptionsClass
 				Options = ConsoleOptions.Init<OptionsDefinition>(args, true);
 				Options.PrintArguments();
+
+				ConsoleOptions.SaveToDisk(Options, "test.data");
+				var o = ConsoleOptions.LoadFromDisk<OptionsDefinition>("test.data");
 
 				// Actually using the argument values is simple:
 				if (Options.ChooseRandomFolder)

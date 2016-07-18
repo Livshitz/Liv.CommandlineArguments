@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -11,6 +12,10 @@ namespace Liv.CommandlineArguments
 	{
 		public static Dictionary<string, string> ReadOptions(string[] args)
 		{
+			// Fix 
+			//var lastArg = args.Last();
+			//if (!lastArg.StartsWith("\"") && lastArg.EndsWith("\"")) args[args.Length-1] = lastArg.Remove(lastArg.Length - 1);
+
 			var ret = new Dictionary<string, string>();
 
 			string cmdArgs = "";
@@ -77,6 +82,11 @@ namespace Liv.CommandlineArguments
 					selectedValue = defaultValue;
 				}
 
+			    if (op.TrailingSlashFix)
+			    {
+			        if (!selectedValue.EndsWith(@"\")) selectedValue += @"\";
+			    }
+
 				try
 				{
 					if (op.AssignedProperty.PropertyType == typeof (bool) && selectedValue == "")
@@ -106,6 +116,8 @@ namespace Liv.CommandlineArguments
 			}
 
 			ret.Options = ops;
+
+			ret.OriginalParameters = args;
 
 			if (printHelpIfNeeded) PrintHelpIfNeededAndExit<T>(args);
 
@@ -255,7 +267,7 @@ namespace Liv.CommandlineArguments
 			return sb.ToString();
 		}
 
-		public static string PrintArguments(BaseOptionsClass optionsClass)
+		public static string PrintArguments(BaseOptionsClass optionsClass, bool writeToConsole = true)
 		{
 			StringBuilder sb = new StringBuilder();
 			sb.Append("| PrintArguments:" + Environment.NewLine);
@@ -264,7 +276,7 @@ namespace Liv.CommandlineArguments
 				sb.Append("|\t" + ConsoleOptions.Fill(op.LongName, 25) + " = " + op.Value + Environment.NewLine);
 			}
 			var ret = sb.ToString();
-			Console.WriteLine(ret);
+			if (writeToConsole) Console.WriteLine(ret);
 			return ret;
 		}
 
@@ -355,6 +367,32 @@ namespace Liv.CommandlineArguments
 			}
 
 			return sb.ToString();
+		}
+
+		public static void SaveToDisk(BaseOptionsClass optionsClass, string filePath)
+		{
+			try
+			{
+				var d = Newtonsoft.Json.JsonConvert.SerializeObject(optionsClass.OriginalParameters);
+				File.WriteAllText(filePath, d);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Failed to save to disk", ex);
+			}
+		}
+
+		public static T LoadFromDisk<T>(string filePath) where T : BaseOptionsClass, new()
+		{
+			try
+			{
+				var savedArgs = Newtonsoft.Json.JsonConvert.DeserializeObject<string[]>(File.ReadAllText(filePath));
+				return Init<T>(savedArgs, false);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Failed to load from disk", ex);
+			}
 		}
 	}
 }
