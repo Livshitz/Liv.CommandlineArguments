@@ -82,7 +82,7 @@ namespace Liv.CommandlineArguments
 					selectedValue = defaultValue;
 				}
 
-			    if (op.TrailingSlashFix)
+			    if (op.TrailingSlashFix && selectedValue != null)
 			    {
 			        if (!selectedValue.EndsWith(@"\")) selectedValue += @"\";
 			    }
@@ -187,33 +187,38 @@ namespace Liv.CommandlineArguments
 			sb.Append("Options:" + Environment.NewLine);
 			foreach (var op in ops)
 			{
-				if (!op.NoShortName) sb.Append(" -" + Fill(op.ShortName, 5));
-				//else sb.Append("  " + Fill(" ", 5));
-				sb.Append(" --" + Fill(op.LongName, 25));
+                var lineSb = new StringBuilder();
 
-				if (op.NoShortName) sb.Append("  " + Fill(" ", 5));
+				if (!op.NoShortName) lineSb.Append(" -" + Fill(op.ShortName, 5));
+                //else sb.Append("  " + Fill(" ", 5));
+                lineSb.Append(" --" + Fill(op.LongName, 25));
 
-				sb.Append(": " + op.Description);
+				if (op.NoShortName) lineSb.Append("  " + Fill(" ", 5));
 
-				if (op.DefaultValue != null)
+			    lineSb.Append(": ");
+               
+                if (op.DefaultValue != null)
 				{
 					if (!String.IsNullOrEmpty(op.DefaultValueExtend))
 					{
-						sb.Append(" (defaultExtended= [YourValue;]" + op.DefaultValueExtend + ") ");
+                        lineSb.Append(" (defaultExtended= [YourValue;]" + op.DefaultValueExtend + ") ");
 					}
 					else
 					{
-						sb.Append(" (default=" +
+                        lineSb.Append(" (default=" +
 						          ((op.Type == typeof (int))
 							          ? "(" + op.DefaultValue + ")"
 							          : op.DefaultValue) + ") ");
 					}
 				}
 
-				if (op.IsRequired)
-					sb.Append(" *Required");
+                if (op.IsRequired)
+                    lineSb.Append(" *Required");
 
-				sb.Append(Environment.NewLine);
+                if (op.Description != null)
+                    lineSb.Append(Environment.NewLine).Append(Cropper(op.Description));
+
+                sb.Append(lineSb).Append(Environment.NewLine);
 			}
 			sb.Append(Environment.NewLine);
 			//sb.Append("#########################" + Environment.NewLine);
@@ -221,6 +226,36 @@ namespace Liv.CommandlineArguments
 			Console.WriteLine(ret);
 			return ret;
 		}
+
+	    public static string Cropper(string text, int padding = 8)
+	    {
+            var ret = new StringBuilder();
+	        var tabs = new String('\t', padding/8);
+
+	        while (text.Length > 0)
+	        {
+	            var l = text.Length;
+	            if (l > 80)
+	            {
+	                l = 80;
+	                l = GetLastSpace(text, l)+1;
+                }
+                ret.Append(tabs).Append("| ").Append(text.Substring(0, l));
+	            text = text.Remove(0, l);
+	            if (text.Length > 0) ret.AppendLine();
+	        }
+
+	        return ret.ToString();
+	    }
+
+	    private static int GetLastSpace(string text, int point)
+	    {
+	        while (text[point] != ' ' && point > 0)
+	        {
+	            point--;
+	        }
+	        return point;
+	    }
 
 		public static string GetSyntax<T>()
 		{

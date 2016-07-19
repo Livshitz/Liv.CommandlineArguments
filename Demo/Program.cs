@@ -13,13 +13,13 @@ namespace Demo
 		[OptionsClass]
 		public class OptionsDefinition : BaseOptionsClass
 		{
-			[Option(Description = "Output file name", DefaultValue = "MyBlankFile.dat", ShortName = "f", TrailingSlashFix = true)]
+			[Option(DefaultValue = "MyBlankFile.dat", ShortName = "f", TrailingSlashFix = true)]
 			public string FileName { get; set; }
 			[Option(Description = "Output folder", ShortName = "d", IsRequired = true, TrailingSlashFix = true)]
 			public string DestinationFolder { get; set; }
 			[Option(Description = "File Size (KB)", NoShortName = true, DefaultValue = "10000")]
 			public int Size { get; set; }
-			[Option(Description = "Number of files to create", ShortName = "n", DefaultValue = "2")]
+			[Option(ShortName = "n", DefaultValue = "2", Description = "Number of files to create. DownloadDb:Progress: Waiting for temp download file to be created. If you use a StringBuilder and know its resulting length in advance, then also use an appropriate constructor, this is much more efficient because it means that only one time-consuming allocation takes place, and no unnecessary copying of data. Nonsense: of course the above code is more efficient")]
 			public int NumberOfFiles { get; set; }
 			[Option(Description = "Run in loops, with interval (-1 for only one run)", ShortName = "i", DefaultValue = "-1")]
 			public int Interval { get; set; }
