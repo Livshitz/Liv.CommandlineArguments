@@ -215,8 +215,10 @@ namespace Liv.CommandlineArguments
                 if (op.IsRequired)
                     lineSb.Append(" *Required");
 
-                if (op.Description != null)
-                    lineSb.Append(Environment.NewLine).Append(Cropper(op.Description));
+			    if (op.Description != null)
+			    {
+			        lineSb.Append(Environment.NewLine).Append(Cropper(op.Description));
+			    }
 
                 sb.Append(lineSb).Append(Environment.NewLine);
 			}
@@ -235,10 +237,10 @@ namespace Liv.CommandlineArguments
 	        while (text.Length > 0)
 	        {
 	            var l = text.Length;
-	            if (l > 80)
+	            if (l + padding > 80)
 	            {
-	                l = 80;
-	                l = GetLastSpace(text, l)+1;
+	                l = 80 - padding - 3;
+	                l = GetLastSpace(text, l-1)+1;
                 }
                 ret.Append(tabs).Append("| ").Append(text.Substring(0, l));
 	            text = text.Remove(0, l);
@@ -308,7 +310,8 @@ namespace Liv.CommandlineArguments
 			sb.Append("| PrintArguments:" + Environment.NewLine);
 			foreach (var op in optionsClass.Options)
 			{
-				sb.Append("|\t" + ConsoleOptions.Fill(op.LongName, 25) + " = " + op.Value + Environment.NewLine);
+			    var val = op.AssignedProperty?.GetValue(optionsClass, null) ?? op.Value;
+                sb.Append("|\t" + ConsoleOptions.Fill(op.LongName, 25) + " = " + val + Environment.NewLine);
 			}
 			var ret = sb.ToString();
 			if (writeToConsole) Console.WriteLine(ret);

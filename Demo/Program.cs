@@ -13,7 +13,7 @@ namespace Demo
 		[OptionsClass]
 		public class OptionsDefinition : BaseOptionsClass
 		{
-			[Option(DefaultValue = "MyBlankFile.dat", ShortName = "f", TrailingSlashFix = true)]
+			[Option(Description = "Install UrlCat.Manager as a win service (will automatically install/start)", DefaultValue = "MyBlankFile.dat", ShortName = "f", TrailingSlashFix = true)]
 			public string FileName { get; set; }
 			[Option(Description = "Output folder", ShortName = "d", IsRequired = true, TrailingSlashFix = true)]
 			public string DestinationFolder { get; set; }
